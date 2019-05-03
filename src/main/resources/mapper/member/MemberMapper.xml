@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pinyu.miniprogram.mysql.mapper.member.MemberMapper">
+
+	<resultMap type="com.pinyu.miniprogram.mysql.entity.member.MemberEntity"
+		id="baseResultMap">
+		<id column="id" property="id" />
+		<result column="member_name" property="memberName" />
+		<result column="tel" property="tel" />
+		<result column="nick_name" property="nickName" />
+		<result column="head_img" property="headImg" />
+		<result column="status" property="status" />
+		<result column="create_date" property="createDate" />
+		<result column="update_date" property="updateDate" />
+		<result column="pwd" property="pwd" />
+		<result column="signature" property="signature" />
+	</resultMap>
+
+	<sql id="fields">
+		id,member_name,nick_name,tel,pwd,head_img,create_date,update_date,status
+	</sql>
+
+	<select id="findById" resultMap="baseResultMap" parameterType="Long">
+		SELECT
+		<include refid="fields" />
+		FROM member WHERE id=#{id};
+	</select>
+	<select id="findAll" resultMap="baseResultMap">
+		SELECT
+		<include refid="fields" />
+		FROM member;
+	</select>
+	<insert id="add" parameterType="com.pinyu.miniprogram.mysql.entity.member.MemberEntity">
+		INSERT INTO
+		member(
+		<include refid="fields" />
+		)
+		VALUES(#{id},#{memberName},#{nickName},#{tel},#{pwd},#{headImg},#{createDate},#{updateDate},#{status});
+	</insert>
+	
+	<select id="findByMemberName" resultMap="baseResultMap" parameterType="java.lang.String">
+		select 
+		<include refid="fields"/>
+		from member where member_name=#{memberName}
+	</select>
+
+</mapper>
+ 
+

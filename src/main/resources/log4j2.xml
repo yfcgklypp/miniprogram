@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出 -->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数 -->
+<Configuration status="WARN" monitorInterval="30">
+	<!--全局属性 -->
+	<Properties>
+		<Property name="LOG_FILE_PATH">C:/Users/Administrator/Desktop/miniprogram/logs</Property>
+		<Property name="PATTERN_FORMAT">%d{yyyy-MM-dd HH:mm:ss} %-5level %class{36} %L
+			%M - %msg%xEx%n</Property>
+	</Properties>
+	<Appenders>
+		<!--输出到控制台 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${PATTERN_FORMAT}" />
+		</Console>
+		<!--输出到文件 用来定义超过指定大小自动删除旧的创建新的的Appender. -->
+		<RollingFile name="RollingInfoFile" fileName="${LOG_FILE_PATH}/info.log"
+			filePattern="${LOG_FILE_PATH}/$${date:yyyyMM}/info-%d{yyyyMMdd}-%i.log.gz">
+			<Filters>
+				<ThresholdFilter level="warn" onMatch="DENY"
+					onMismatch="NEUTRAL" />
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout>
+				<pattern>${PATTERN_FORMAT}</pattern>
+			</PatternLayout>
+			<Policies>
+				<!-- rollover on startup, daily and when the file reaches 10 MegaBytes -->
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<!--输出警告日志到文件 -->
+		<RollingFile name="RollingWarnFile" fileName="${LOG_FILE_PATH}/warn.log"
+			filePattern="${LOG_FILE_PATH}/$${date:yyyyMM}/warn-%d{yyyyMMdd}-%i.log.gz">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<Filters>
+				<ThresholdFilter level="error" onMatch="DENY"
+					onMismatch="NEUTRAL" />
+				<ThresholdFilter level="warn" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout>
+				<pattern>${PATTERN_FORMAT}</pattern>
+			</PatternLayout>
+			<Policies>
+				<!-- rollover on startup, daily and when the file reaches 10 MegaBytes -->
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<!--输出错误日志到文件 -->
+		<RollingFile name="RollingErrorFile" fileName="${LOG_FILE_PATH}/error.log"
+			filePattern="${LOG_FILE_PATH}/$${date:yyyyMM}/error-%d{yyyyMMdd}-%i.log.gz">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="error" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${PATTERN_FORMAT}</pattern>
+			</PatternLayout>
+			<Policies>
+				<!-- rollover on startup, daily and when the file reaches 10 MegaBytes -->
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+
+		<!--保存到数据库配置文件 -->
+	</Appenders>
+
+	<Loggers>
+
+		<!--过滤掉spring和mybatis的一些无用的DEBUG信息 -->
+		<Logger name="org.springframework" level="INFO" />
+		<Logger name="org.mybatis" level="INFO" />
+		<Logger name="org.hibernate" level="INFO" />
+		<Logger name="org.quartz" level="INFO" />
+		<Logger name="com.luis" level="INFO" />
+		<Logger name="com.mchange" level="INFO" />
+
+		<!-- LOG everything at INFO level -->
+		<Root level="ALL">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingInfoFile" />
+		</Root>
+	</Loggers>
+
+</Configuration>

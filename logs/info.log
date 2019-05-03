@@ -1,0 +1,79 @@
+2019-02-26 18:31:20 INFO  org.springframework.boot.StartupInfoLogger 50
+			logStarting - Starting Application on USER-20181230HH with PID 8416 (C:\Users\Administrator\Desktop\miniprogram\target\classes started by Administrator in C:\Users\Administrator\Desktop\miniprogram)
+2019-02-26 18:31:20 INFO  org.springframework.boot.SpringApplication 679
+			logStartupProfileInfo - The following profiles are active: test
+2019-02-26 18:31:22 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 244
+			multipleStoresDetected - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-02-26 18:31:22 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 126
+			registerRepositoriesIn - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-26 18:31:22 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 182
+			registerRepositoriesIn - Finished Spring Data repository scanning in 61ms. Found 0 repository interfaces.
+2019-02-26 18:31:23 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330
+			postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$31bb60cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-26 18:31:23 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330
+			postProcessAfterInitialization - Bean 'redisConfiguration' of type [com.pinyu.miniprogram.config.redis.RedisConfiguration$$EnhancerBySpringCGLIB$$2f7f3920] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-26 18:31:24 INFO  io.undertow.servlet.spec.ServletContextImpl 364
+			log - Initializing Spring embedded WebApplicationContext
+2019-02-26 18:31:24 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 296
+			prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 3658 ms
+2019-02-26 18:31:25 INFO  com.pinyu.miniprogram.global.aspect.OperationLogAspect 34
+			<init> - 用户操作日志
+2019-02-26 18:31:26 INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure 56
+			dataSource - Init DruidDataSource
+2019-02-26 18:31:26 INFO  com.alibaba.druid.pool.DruidDataSource 930
+			init - {dataSource-1} inited
+2019-02-26 18:31:27 INFO  com.mchange.v2.log.jdk14logging.Jdk14MLog$Jdk14MLogger 124
+			log - MLog clients using java 1.4+ standard logging.
+2019-02-26 18:31:27 INFO  com.mchange.v2.log.jdk14logging.Jdk14MLog$Jdk14MLogger 318
+			info - Initializing c3p0-0.9.1.1 [built 15-March-2007 01:32:31; debug? true; trace: 10]
+2019-02-26 18:31:27 INFO  org.quartz.impl.StdSchedulerFactory 1184
+			instantiate - Using default implementation for ThreadExecutor
+2019-02-26 18:31:27 INFO  org.quartz.simpl.SimpleThreadPool 268
+			initialize - Job execution threads will use class loader of thread: main
+2019-02-26 18:31:27 INFO  org.quartz.core.SchedulerSignalerImpl 61
+			<init> - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-02-26 18:31:27 INFO  org.quartz.core.QuartzScheduler 240
+			<init> - Quartz Scheduler v.2.2.1 created.
+2019-02-26 18:31:27 INFO  org.quartz.impl.jdbcjobstore.JobStoreSupport 667
+			initialize - Using db table-based data access locking (synchronization).
+2019-02-26 18:31:27 INFO  org.quartz.impl.jdbcjobstore.JobStoreTX 59
+			initialize - JobStoreTX initialized.
+2019-02-26 18:31:27 INFO  org.quartz.core.QuartzScheduler 305
+			initialize - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'MyQuartzScheduler' with instanceId 'USER-20181230HH1551177087118'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is clustered.
+
+2019-02-26 18:31:27 INFO  org.quartz.impl.StdSchedulerFactory 1339
+			instantiate - Quartz scheduler 'MyQuartzScheduler' initialized from an externally provided properties instance.
+2019-02-26 18:31:27 INFO  org.quartz.impl.StdSchedulerFactory 1343
+			instantiate - Quartz scheduler version: 2.2.1
+2019-02-26 18:31:27 INFO  org.quartz.core.QuartzScheduler 2311
+			setJobFactory - JobFactory set to: com.pinyu.miniprogram.config.quartz.MyJobFactory@3b42b729
+2019-02-26 18:31:27 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 171
+			initialize - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-26 18:31:28 INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping 56
+			<init> - Adding welcome page: class path resource [static/index.html]
+2019-02-26 18:31:29 INFO  org.springframework.scheduling.quartz.SchedulerFactoryBean 726
+			startScheduler - Starting Quartz Scheduler now
+2019-02-26 18:31:29 INFO  com.mchange.v2.log.jdk14logging.Jdk14MLog$Jdk14MLogger 318
+			info - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge4iya1bh4jf3jvypme|4e20a985, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge4iya1bh4jf3jvypme|4e20a985, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/miniprogram, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 0, maxStatementsPerConnection -> 120, minPoolSize -> 1, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2019-02-26 18:31:31 INFO  org.quartz.core.QuartzScheduler 575
+			start - Scheduler MyQuartzScheduler_$_USER-20181230HH1551177087118 started.
+2019-02-26 18:31:31 INFO  org.xnio.Xnio 104
+			<clinit> - XNIO version 3.3.8.Final
+2019-02-26 18:31:32 INFO  org.xnio.nio.NioXnio 55
+			<clinit> - XNIO NIO Implementation Version 3.3.8.Final
+2019-02-26 18:31:32 INFO  org.springframework.boot.web.embedded.undertow.UndertowServletWebServer 148
+			start - Undertow started on port(s) 8081 (http) with context path ''
+2019-02-26 18:31:32 INFO  org.springframework.boot.StartupInfoLogger 59
+			logStarted - Started Application in 12.618 seconds (JVM running for 15.96)
+2019-02-26 18:32:29 INFO  io.undertow.servlet.spec.ServletContextImpl 364
+			log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-26 18:32:29 INFO  org.springframework.web.servlet.FrameworkServlet 524
+			initServletBean - Initializing Servlet 'dispatcherServlet'
+2019-02-26 18:32:29 INFO  org.springframework.web.servlet.FrameworkServlet 546
+			initServletBean - Completed initialization in 21 ms

@@ -1,0 +1,112 @@
+server: 
+  port: 8081
+  # 下面是配置undertow作为服务器的参数
+  undertow: 
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    io-threads: 4
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    worker-threads: 20
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+    
+#启用shutdown
+#endpoints: 
+ # shutdown: 
+   # enable: true
+#禁用密码验证
+#endpoints: 
+  #shutdown: 
+    #sensitive: false
+#linux关闭的脚本
+#curl -X POST host:port/shutdown
+
+#开启shutdown的安全验证
+#endpoints: 
+  #shutdown: 
+    #sensitive: true
+    
+#验证用户名和密码
+#security: 
+  #user: 
+    #name: admin
+    #password: admin
+    
+#角色
+#management: 
+  #address: 127.0.0.1
+  #port: 8081
+  #security: 
+    #role: SUPERUSER
+
+
+spring: 
+  http:
+    encoding:
+      force: true
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://120.79.81.103:5306/miniprogram?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: admin
+# ELASTICSEARCH (ElasticsearchProperties)
+# Elasticsearch cluster name.
+#  data:
+#    elasticsearch:
+#      cluster-name: elasticsearch
+#      cluster-nodes: 192.168.13.111:9300,192.168.13.222:9300
+#      repositories:
+#        enabled: true
+  redis: 
+#    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password: 
+    timeout: 10000
+    lettuce:
+          pool:
+            minIdle: 0
+            maxIdle: 10
+            maxWait: 10000
+            max-active: 10
+#    cluster:
+#      nodes:
+#        - 192.168.91.5:9001
+#        - 192.168.91.5:9002
+#        - 192.168.91.5:9003
+#        - 192.168.91.5:9004
+#        - 192.168.91.5:9005
+#        - 192.168.91.5:9006
+  activemq: 
+    queueName: mvp.queue
+    topicName: mvp.topic
+    #账号密码
+    user: user
+    password: user
+    #URL of the ActiveMQ broker.
+    broker-url: tcp://localhost:61616
+    in-memory: false
+    #必须使用连接池
+    pool: 
+      #启用连接池
+      enabled: true
+      #连接池最大连接数
+      max-connections: 5
+      #空闲的连接过期时间，默认为30秒
+      idle-timeout: 30s
+    
+mybatis: 
+  typeAliasesPackage: com.pinyu.miniprogram.mysql.entity
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+mapper:
+  mappers: com.pinyu.miniprogram.mysql.mappers.BaseMapper
+  identity: mysql
+  
+  
+#logging.config: 
+#  classpath: test/log4j2_test.xml
