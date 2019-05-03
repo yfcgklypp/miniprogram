@@ -51,7 +51,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
     platform: mysql
-    url: jdbc:mysql://120.79.81.103:5306/miniprogram?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://xxx.xxx.xxx.xxx:5306/miniprogram?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
     username: root
     password: admin
 # ELASTICSEARCH (ElasticsearchProperties)
